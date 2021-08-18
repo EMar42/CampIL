@@ -10,9 +10,10 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
 
-
+const userRoutes = require('./routes/users')
 const campgrounds = require('./routes/campgrounds');
-const reviews = require('./routes/reviews');
+const reviewRoutes = require('./routes/reviews');
+const review = require('./models/review');
 
 mongoose.connect('mongodb://localhost:27017/CampIL', {
     useNewUrlParser: true,
@@ -52,18 +53,19 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session())
-passport.use(new LocalStrategy(User.authenticate()))
 
-passport.serializeUser()
+passport.use(new LocalStrategy(User));
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
 app.use((req, res, next) => {
-    res.locals.success = req.flash('success');
-    res.locals.error = req.flash('error');
-    next();
+    res.locals.success = req.flash('success')
+    res.locals.error = req.flash('error')
 })
 
+app.use('/', userRoutes)
 app.use('/campgrounds', campgrounds)
-app.use('/campgrounds/:id/reviews', reviews)
+app.use('/campgrounds/:id/reviews', reviewRoutes)
 
 app.get('/', (req, res) => {
     res.render('home')
