@@ -13,7 +13,7 @@ const User = require('./models/user')
 const userRoutes = require('./routes/users')
 const campgrounds = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
-const review = require('./models/review');
+
 
 mongoose.connect('mongodb://localhost:27017/CampIL', {
     useNewUrlParser: true,
@@ -59,8 +59,11 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
 app.use((req, res, next) => {
+
+    res.locals.currentUser = req.user
     res.locals.success = req.flash('success')
     res.locals.error = req.flash('error')
+    next()
 })
 
 app.use('/', userRoutes)
@@ -70,7 +73,6 @@ app.use('/campgrounds/:id/reviews', reviewRoutes)
 app.get('/', (req, res) => {
     res.render('home')
 });
-
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))
