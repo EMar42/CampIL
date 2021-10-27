@@ -15,11 +15,7 @@ router.post('/register', catchAsync(async (req, res, next) => {
         const registeredUser = await User.register(user, password);
         req.login(registeredUser, err => {
             if (err) return next(err);
-<<<<<<< HEAD:routes/users.js
-            req.flash('success', 'Welcome to CampIL!');
-=======
             req.flash('success', 'Welcome to CampIL!!');
->>>>>>> 51da2a2211a7cb3b87370d7f326abeb6384e42af:routes/user.js
             res.redirect('/campgrounds');
         })
     } catch (e) {
@@ -32,6 +28,7 @@ router.get('/login', (req, res) => {
     res.render('users/login');
 })
 
+//you can change the strategy 'local' to something else
 router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
     req.flash('success', 'welcome back!');
     const redirectUrl = req.session.returnTo || '/campgrounds';
