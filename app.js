@@ -10,15 +10,6 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
-<<<<<<< HEAD
-=======
-const userRoutes = require('./routes/users')
-const campgrounds = require('./routes/campgrounds');
-const reviewRoutes = require('./routes/reviews');
-
-
-
->>>>>>> b547099fd449a49103354fc4b43569582c320bb9
 const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
@@ -61,33 +52,13 @@ app.use(session(sessionConfig))
 app.use(flash());
 
 app.use(passport.initialize());
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-app.use(passport.session())
-
-passport.use(new LocalStrategy(User));
-passport.serializeUser(User.serializeUser())
-passport.deserializeUser(User.deserializeUser())
-
-app.use((req, res, next) => {
-
-    res.locals.currentUser = req.user
-    res.locals.success = req.flash('success')
-    res.locals.error = req.flash('error')
-    next()
-})
-
-app.use('/', userRoutes)
-app.use('/campgrounds', campgrounds)
-app.use('/campgrounds/:id/reviews', reviewRoutes)
->>>>>>> b547099fd449a49103354fc4b43569582c320bb9
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//global things (locals) --> can be used almost in evrey place
 app.use((req, res, next) => {
     // console.log(req.session)
     res.locals.currentUser = req.user;
