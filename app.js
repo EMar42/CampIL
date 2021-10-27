@@ -57,10 +57,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+/* 
+    passing glob. to middleware for inter-use    
+*/
 
-//global things (locals) --> can be used almost in evrey place
 app.use((req, res, next) => {
-    // console.log(req.session)
+    console.log(req.session)
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
