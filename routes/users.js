@@ -5,13 +5,22 @@ const catchAsync = require('../utils/catchAsync');
 const User = require('../models/user');
 const users = require('../controllers/users')
 
-router.get('/register', (users.renderRegister));
-router.post('/register', catchAsync(users.register));
-router.get('/login', users.renderLogin);
+router.route('/register')
+    .get(users.renderRegister)
+    .post(catchAsync(users.register))
 
-//you can change the strategy 'local' to something else
-router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (users.login));
+router.route('/login')
+    .get(users.renderLogin)
+    .post( passport.authenticate('local', {         ////you can change the strategy 'local' to something else
+        failureFlash: true, failureRedirect: '/login' }), (users.login))
+
 
 router.get('/logout', users.logout);
 
 module.exports = router;
+
+
+// router.get('/login', users.renderLogin);
+// router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (users.login));
+// router.get('/register', (users.renderRegister));
+// router.post('/register', catchAsync(users.register));

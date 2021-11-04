@@ -7,7 +7,6 @@ const Review = require('./models/review.js');
 //check if the user is currently login with Passport.session
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
-        console.log(req.originalUrl);
         req.session.returnTo = req.originalUrl
         req.flash('error', 'You must be signed in first!');
         return res.redirect('/login');
@@ -53,7 +52,6 @@ module.exports.validateReview = (req, res, next) => {
     const { error } = reviewSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(',')
-        console.log(msg);
         throw new ExpressError(msg, 400)
     } else {
         next();
