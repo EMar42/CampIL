@@ -16,9 +16,9 @@ const reviewRoutes = require('./routes/reviews');
 
 mongoose.connect('mongodb://localhost:27017/CampIL', {
     useNewUrlParser: true,
-    useCreateIndex: true,
+    // useCreateIndex: true,
     useUnifiedTopology: true,
-    useFindAndModify: false
+    // useFindAndModify: false
 });
 
 const db = mongoose.connection;
