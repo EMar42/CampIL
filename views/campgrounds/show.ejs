@@ -5,12 +5,15 @@
   <div class="col-6">
     <div id="campgroundCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
+        <!-- using forEach for index i so be easier to use index over carousel 1st obj -->
         <% campground.images.forEach((img, i) => { %>
+        <!-- seeting up active class for only 1st image for carousel  -->
         <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
           <img src="<%= img.url%>" class="d-block w-100" alt="" />
         </div>
         <% }) %>
       </div>
+      <!-- Hide slider indicators if the total images of a campground is < 1 -->
       <% if(campground.images.length > 1) {%>
       <a class="carousel-control-prev" href="#campgroundCarousel" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
