@@ -1,29 +1,37 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const campgrounds = require('../controllers/campgrounds')
-const catchAsync = require('../utils/catchAsync');
-const { campgroundSchema } = require('../schemas.js');
-const { isLoggedIn, isAuthor, validateCampground } = require('../middleware');
-const multer = require('multer');
-const { storage } = require('../cloudinary');
+const campgrounds = require("../controllers/campgrounds");
+const catchAsync = require("../utils/catchAsync");
+const { campgroundSchema } = require("../schemas.js");
+const { isLoggedIn, isAuthor, validateCampground } = require("../middleware");
+const ExpressError = require("../utils/ExpressError");
+
+const multer = require("multer");
+const { storage } = require("../cloudinary"); //A multer storage engine for Cloudinary
 const upload = multer({ storage });
 
-const ExpressError = require('../utils/ExpressError');
-const Campground = require('../models/campground');
+const Campground = require("../models/campground");
 
-router.route('/')
-    .get(catchAsync(campgrounds.index))
-    .post(isLoggedIn, upload.array('image'), validateCampground, catchAsync(campgrounds.createCampground))
-    
-router.get('/new', isLoggedIn, campgrounds.renderNewForm)
+router
+  .route("/")
+  .get(catchAsync(campgrounds.index))
+  .post(isLoggedIn, upload.array("image"), validateCampground, catchAsync(campgrounds.createCampground));
 
-router.route('/:id')
-    .get(catchAsync(campgrounds.showCampground))
-    .put(isLoggedIn, isAuthor, upload.array('image'), validateCampground, catchAsync(campgrounds.updateCampground))
-    .delete(isLoggedIn, isAuthor, catchAsync(campgrounds.deleteCampground));
+router.get("/new", isLoggedIn, campgrounds.renderNewForm);
 
-router.get('/:id/edit', isLoggedIn, catchAsync(campgrounds.renderEditForm))
+router
+  .route("/:id")
+  .get(catchAsync(campgrounds.showCampground))
+  .put(
+    isLoggedIn,
+    isAuthor,
+    upload.array("image"),
+    validateCampground,
+    catchAsync(campgrounds.updateCampground)
+  )
+  .delete(isLoggedIn, isAuthor, catchAsync(campgrounds.deleteCampground));
 
+router.get("/:id/edit", isLoggedIn, catchAsync(campgrounds.renderEditForm));
 
 //two ways to implement routes at javascript
 
