@@ -56,7 +56,7 @@ module.exports.renderEditForm = async (req, res) => {
   }
   res.render("campgrounds/edit", { campground });
 };
-
+//
 module.exports.updateCampground = async (req, res) => {
   const { id } = req.params;
   console.log("On update\n", req.body);
