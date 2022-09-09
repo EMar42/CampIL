@@ -18,15 +18,17 @@ module.exports.createCampground = async (req, res, next) => {
     .forwardGeocode({
       query: req.body.campground.location,
       countries: ["il"],
+      limit: 1
     })
     .send();
 
   const campground = new Campground(req.body.campground);
   campground.geometry = geoData.body.features[0].geometry;
+  // console.log("Geometry respond : ", geometry);
   campground.images = req.files.map((f) => ({ url: f.path, filename: f.filename }));
   campground.author = req.user._id;
+  console.log(campground)
   await campground.save();
-  console.log("@@@@@@@@@on save\n", campground);
   req.flash("success", "Successfully made a new campground!");
   res.redirect(`/campgrounds/${campground._id}`);
 };
@@ -59,7 +61,6 @@ module.exports.renderEditForm = async (req, res) => {
 //
 module.exports.updateCampground = async (req, res) => {
   const { id } = req.params;
-  console.log("On update\n", req.body);
   const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground });
   const imgs = req.files.map((f) => ({ url: f.path, filename: f.filename }));
   campground.images.push(...imgs);
