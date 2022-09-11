@@ -1,0 +1,8 @@
+{
+    "editor.guides.highlightActiveIndentation": true,
+    "editor.guides.indentation": true,
+    "workbench.tree.renderIndentGuides": "onHover",
+    "editor.wordWrapColumn": 120,
+    "html.format.wrapLineLength": 10,
+    "editor.wordWrap": "wordWrapColumn"
+}
