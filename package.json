@@ -1,10 +1,11 @@
 {
   "name": "campil",
   "version": "1.0.0",
-  "description": "a cool learning project based on Colt Steel - WDB on Udemy",
+  "description": "Camping website based on WDB.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
