@@ -30,8 +30,7 @@ router.route("/:id")
 router.get("/:id/edit", isLoggedIn, catchAsync(campgrounds.renderEditForm));
 
 
-
-//two ways to implement routes at javascript
+//same routes, diffrent way to implement routes at javascript
 
 // router.get('/', catchAsync(campgrounds.index));
 // router.post('/', isLoggedIn, validateCampground, catchAsync(campgrounds.createCampground))

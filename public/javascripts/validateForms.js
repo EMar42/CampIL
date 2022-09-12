@@ -1,9 +1,6 @@
 (function () {
-  "use strict";
-
-  //using npm "bs-custom-file-input"
-  //   bsCustomFileInput.init();
-
+  'use strict' // literal expression ignoring earlier version of js
+  
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
   const forms = document.querySelectorAll(".validated-form");
 
@@ -16,7 +13,6 @@
           event.preventDefault();
           event.stopPropagation();
         }
-
         form.classList.add("was-validated");
       },
       false

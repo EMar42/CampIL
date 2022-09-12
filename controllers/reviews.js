@@ -12,6 +12,7 @@ module.exports.createReview = async (req, res) => {
     res.redirect(`/campgrounds/${campground._id}`);
 }
 
+//remove instances that match $pull{} - mongo operator
 module.exports.destroyReview = async (req, res) => {
     const { id, reviewId } = req.params;
     await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });

@@ -24,7 +24,7 @@ const seedDB = async () => {
         const random50 = Math.floor(Math.random() * 50);
         const price = Math.floor(Math.random() * 30) + 10;
         const camp = new Campground({
-            author: "630a57cb3e94e39524e148d5",
+            author: "630a57cb3e94e39524e148d5", //After register one user, put his ID here.
             location: `${cities[i].city}, ${cities[i].admin_name}`,
             title: `${sample(descriptors)} ${sample(places)}`,
             geometry: {
@@ -36,7 +36,7 @@ const seedDB = async () => {
             price: random50,
             images: [
                 {
-                    url: "https://res.cloudinary.com/diuytoipw/image/upload/v1662719587/CampIL/r60tfehnrdf3hj2yf3xm.jpg",
+                    url: "https://images.unsplash.com/photo-1533575770077-052fa2c609fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
                     filename: "CampIL/jieh2qusobrbvrdguorg",
                 },
                 {

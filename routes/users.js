@@ -25,4 +25,3 @@ module.exports = router;
 // router.get('/register', (users.renderRegister));
 // router.post('/register', catchAsync(users.register));
 
-router

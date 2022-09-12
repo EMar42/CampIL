@@ -17,22 +17,26 @@ module.exports.createCampground = async (req, res, next) => {
     const geoData = await geocoder
         .forwardGeocode({
             query: req.body.campground.location,
-            countries: ["il"],
+            countries: ["il"], //["<Enter ur specific country - example: il - stands for Israel >"]
             limit: 1,
         })
         .send();
-
+    if (!geoData.body.features[0]) {
+        req.flash("error", "Bad Location, Try Enter another location!");
+        return res.redirect("/campgrounds/new");
+    }
     const campground = new Campground(req.body.campground);
+    //getting geometry point from body provided by user.
     campground.geometry = geoData.body.features[0].geometry;
-    // console.log("Geometry respond : ", geometry);
+    //reoginize by schema to be: foreach f take url to be f.path and filename to be f.filename
     campground.images = req.files.map((f) => ({ url: f.path, filename: f.filename }));
     campground.author = req.user._id;
-    console.log(campground);
     await campground.save();
     req.flash("success", "Successfully made a new campground!");
     res.redirect(`/campgrounds/${campground._id}`);
 };
 
+//show campground reviews populated by user ID
 module.exports.showCampground = async (req, res) => {
     const campground = await Campground.findById(req.params.id)
         .populate({
@@ -58,7 +62,7 @@ module.exports.renderEditForm = async (req, res) => {
     }
     res.render("campgrounds/edit", { campground });
 };
-//
+
 module.exports.updateCampground = async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground });

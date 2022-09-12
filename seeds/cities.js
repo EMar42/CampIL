@@ -1,3 +1,5 @@
+//Using Israel geolocation, feel free to use any location you want.
+
 module.exports = [
   {
     "city": "Jerusalem", 
