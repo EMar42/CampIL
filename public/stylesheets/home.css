@@ -32,6 +32,5 @@ max-width: 60vw;
 
 .btn-secondary, .btn-secondary:hover{
   color: white;
-  text-shadow: aqua;
-  
+  text-shadow: aqua; 
 }

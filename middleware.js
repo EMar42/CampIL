@@ -2,8 +2,7 @@ const { campgroundSchema, reviewSchema } = require("./schemas.js");
 const ExpressError = require("./utils/ExpressError");
 const Campground = require("./models/campground");
 const Review = require("./models/review.js");
-//asdasdasdsa
-console.log(asdsad);
+
 //check if the user is currently login with Passport.session
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
