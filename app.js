@@ -169,20 +169,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error", { err });
 });
 
-<<<<<<< HEAD
-const port = process.env.PORT || 3000
-app.listen(port, () => {
-    console.log(`{Serving on port :${port}`);
-=======
-<<<<<<< HEAD
-const port = process.env.PORT || 3000
-app.listen(port, () => {
-    console.log(`{Serving on port :${port}`);
-=======
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`Serving on port ${port}`);
->>>>>>> dev
->>>>>>> parent of 4c3f953 (Revert "fixing some stuff")
+    console.log(`{Serving on port :${port}`);
 });
-
