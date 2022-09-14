@@ -2,19 +2,11 @@ const mongoose = require("mongoose");
 const cities = require("./cities");
 const { places, descriptors } = require("./seedHelpers");
 const Campground = require("../models/campground");
-const User = require("../models/user");
-const e = require("connect-flash");
-const { resolveInclude } = require("ejs");
 
 mongoose.connect("mongodb://localhost:27017/CampIL", {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
-}).then(()=>{
-    console.log(`connection to database established`)
-}).catch(err=>{
-    console.log(`db error ${err.message}`);
-    process.exit(-1)
 });
 
 const db = mongoose.connection;
@@ -26,39 +18,13 @@ db.once("open", () => {
 
 const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
-//delete all users
-const createUser = async () => {
-    // await User.deleteMany({});
-    // const user = {email: 'user1@mail.com',username: 'user1', password: 'user1'}
-    // console.log(user);
-    // const registerUser = await User.register(user)
-
-    const us1 = await User.findOne({}).then((user) => {
-        if (!user) {
-            console.log("No user found, Creating new user <username, pass> = <user1, user1>");
-            const userTemp = { email: "user1@mail.com", username: "user1" };
-            const password = "user1";
-            const regUser = User.register(userTemp, password);
-            return regUser;
-        } else {
-            console.log(`Found user : ${user.username} seeding DB from this user`);
-            return user;
-        }
-    });
-    return us1._id;
-};
-
-//create user
-//return id user for seedDB
-
 const seedDB = async () => {
-    const userID = await createUser();
     await Campground.deleteMany({});
     for (let i = 0; i < cities.length; i++) {
         const random50 = Math.floor(Math.random() * 50);
         const price = Math.floor(Math.random() * 30) + 10;
         const camp = new Campground({
-            author: userID, //After register one user, put his ID here.
+            author: "630a57cb3e94e39524e148d5", //After register one user, put his ID here.
             location: `${cities[i].city}, ${cities[i].admin_name}`,
             title: `${sample(descriptors)} ${sample(places)}`,
             geometry: {
@@ -81,7 +47,6 @@ const seedDB = async () => {
         });
         await camp.save();
     }
-    console.log("Database seeded successfully");
 };
 
 seedDB().then(() => {
