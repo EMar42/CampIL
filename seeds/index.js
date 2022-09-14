@@ -4,8 +4,9 @@ const { places, descriptors } = require("./seedHelpers");
 const Campground = require("../models/campground");
 const User = require("../models/user");
 
+const dbUrl = process.env.DB_URL || 3000;
 
-mongoose.connect("mongodb://localhost:27017/CampIL", {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
