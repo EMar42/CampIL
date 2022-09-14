@@ -14,9 +14,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 const helmet = require("helmet");
-
 const MongoStore = require("connect-mongo");
-
 const userRoutes = require("./routes/users");
 const campgroundRoutes = require("./routes/campgrounds");
 const reviewRoutes = require("./routes/reviews");
@@ -24,21 +22,27 @@ const reviewRoutes = require("./routes/reviews");
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/CampIL";
 const secret = process.env.SECRET || "thisshouldbeabettersecret";
 
-// mongoose.connect(dbUrl, {
-mongoose.connect(dbUrl, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-});
+const app = express();
+
+mongoose
+    .connect("mongodb://localhost:27017/CampIL", {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+    })
+    .then(() => {
+        console.log(`connection to database established`);
+    })
+    .catch((err) => {
+        console.log(`db error ${err.message}`);
+        process.exit(-1);
+    });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
     console.log("Database connected");
 });
-
-const app = express();
 
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
@@ -63,7 +67,7 @@ app.use(helmet());
 const sessionConfig = {
     store: MongoStore.create({
         mongoUrl: dbUrl,
-        dbName: "example-db",
+        dbName: "sessions-db",
         stringify: false,
     }),
     name: "session",
@@ -139,12 +143,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-/* 
-    passing glob. to middleware for inter-use    
-*/
 
 app.use((req, res, next) => {
-    // console.log(req.session)
     res.locals.currentUser = req.user;
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
@@ -169,8 +169,20 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error", { err });
 });
 
+<<<<<<< HEAD
 const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`{Serving on port :${port}`);
+=======
+<<<<<<< HEAD
+const port = process.env.PORT || 3000
+app.listen(port, () => {
+    console.log(`{Serving on port :${port}`);
+=======
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Serving on port ${port}`);
+>>>>>>> dev
+>>>>>>> parent of 4c3f953 (Revert "fixing some stuff")
 });
 
