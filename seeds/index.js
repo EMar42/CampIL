@@ -25,13 +25,9 @@ db.once("open", () => {
 
 const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
-//delete all users
-const createUser = async () => {
-    // await User.deleteMany({});
-    // const user = {email: 'user1@mail.com',username: 'user1', password: 'user1'}
-    // console.log(user);
-    // const registerUser = await User.register(user)
 
+const createUser = async () => {
+    await User.deleteMany({});
     const us1 = await User.findOne({}).then((user) => {
         if (!user) {
             console.log("No user found, Creating new user <username, pass> = <user1, user1>");
