@@ -25,7 +25,7 @@ const secret = process.env.SECRET || "thisshouldbeabettersecret";
 const app = express();
 
 mongoose
-    .connect("mongodb://localhost:27017/CampIL", {
+    .connect(dbUrl, {
         useNewUrlParser: true,
         useCreateIndex: true,
         useUnifiedTopology: true,
