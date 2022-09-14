@@ -169,17 +169,8 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error", { err });
 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`{Serving on port :${port}`);
-=======
-const port = process.env.PORT || 3000;
-=======
-const port = process.env.PORT || 3000
->>>>>>> parent of 194efed (fixing some stuff)
-app.listen(port, () => {
-    console.log(`Serving on port ${port}`);
->>>>>>> dev
 });
+
