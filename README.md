@@ -1,10 +1,11 @@
 <p align="center">
 <h1 align="center">CampIL</h1>
-  <img height="400" width="auto" src=".PNG">
+  <img height="400" width="auto"  src="./screenshots/camp.jpg">
 </p>
 
 
-A Node.js web application project from the. It is a web application designed to add, rate and review different campgrounds, different users(read campers) can put in their comments and concerns, so that it is a well informed and well prepared camping trip for other users. 
+A Node.js web application project. It is a web application designed to add, rate and review different campgrounds, different users(read campers) can put in their comments and concerns, so that it is a well informed and well prepared camping trip for other users. 
+This project bassed on a Udemy course WDB - by Colt Steele. 
 
 ### Features: 
 I wrote the main features if you are just curious about what is there.
@@ -20,6 +21,8 @@ Add & Edit user review.
 
 
 ## Setup
+if you would like make seperate location except of Israel - delete this line over CampIL/controllers/campgrounds.js 
+```countries: ["il"], //["<Enter ur specific country - example: il - stands for Israel >"]```
 1. Create a Cloudinary account, MongoDB database and Mapbox account.
 2. Add details of these accounts to an .env file as provided in: [Settings](#Settings)
 3. (Optionally) Seed the database
