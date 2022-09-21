@@ -20,7 +20,7 @@ const campgroundRoutes = require("./routes/campgrounds");
 const reviewRoutes = require("./routes/reviews");
 
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/CampIL";
-const secret = process.env.SECRET || "thisshouldbeabettersecret";
+const SECRET = process.env.SECRET || "thisshouldbeabettersecret";
 
 const app = express();
 
@@ -71,7 +71,7 @@ const sessionConfig = {
         stringify: false,
     }),
     name: "session",
-    secret,
+    secret: SECRET,
     resave: false,
     saveUninitialized: true,
     mongoOptions: { useUnifiedTopology: true },
@@ -85,6 +85,8 @@ const sessionConfig = {
 
 app.use(session(sessionConfig));
 app.use(flash());
+
+//helmet restrcitions - 
 
 const scriptSrcUrls = [
     "https://stackpath.bootstrapcdn.com/",

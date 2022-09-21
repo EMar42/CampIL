@@ -8,8 +8,6 @@ const multer = require("multer");
 const { storage } = require("../cloudinary"); //A multer storage engine for Cloudinary
 const upload = multer({ storage });
 
-const Campground = require("../models/campground");
-
 router.route("/")
   .get(catchAsync(campgrounds.index))
   .post(isLoggedIn, upload.array("image"), validateCampground, catchAsync(campgrounds.createCampground));
@@ -30,8 +28,7 @@ router.route("/:id")
 router.get("/:id/edit", isLoggedIn, catchAsync(campgrounds.renderEditForm));
 
 
-//same routes, diffrent way to implement routes at javascript
-
+//same routes, diffrent way to implement routes using javascript
 // router.get('/', catchAsync(campgrounds.index));
 // router.post('/', isLoggedIn, validateCampground, catchAsync(campgrounds.createCampground))
 // router.get('/:id', catchAsync(campgrounds.showCampground));

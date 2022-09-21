@@ -22,12 +22,7 @@ const extension = (joi) => ({
                 //clean must be equal to initial value or we call error.
                 if (clean !== value) return helpers.error("string.escapeHTML", { value });
                 //everything passes, so can return the clean.
-                return clean;
-                //maybe check to remove &amp
-                //   if (clean.includes('&amp;')) {
-                //     clean = clean.replace(/&amp;/g, '&');
-                // }
-                //possible to if(clean){return helpers.error('string.escapeHTML', { value });
+                return clean; 
             },
         },
     },

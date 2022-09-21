@@ -26,7 +26,7 @@ db.once("open", () => {
 
 const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
-
+//create user if there is none, if there is pick the first one to seed.
 const createUser = async () => {
     await User.deleteMany({});
     const us1 = await User.findOne({}).then((user) => {
@@ -44,8 +44,6 @@ const createUser = async () => {
     return us1._id;
 };
 
-//create user
-//return id user for seedDB
 
 const seedDB = async () => {
     const userID = await createUser();
