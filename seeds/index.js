@@ -4,7 +4,7 @@ const { places, descriptors } = require("./seedHelpers");
 const Campground = require("../models/campground");
 const User = require("../models/user");
 
-const dbUrl = process.env.DB_URL || 3000;
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/CampIL";
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
@@ -22,6 +22,7 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
     console.log("Database connected");
+    console.log(dbUrl);
 });
 
 const sample = (array) => array[Math.floor(Math.random() * array.length)];
@@ -47,7 +48,7 @@ const createUser = async () => {
 
 const seedDB = async () => {
     const userID = await createUser();
-    await Campground.deleteMany({});
+    // await Campground.deleteMany({});
     for (let i = 0; i < cities.length; i++) {
         const random50 = Math.floor(Math.random() * 50);
         const price = Math.floor(Math.random() * 30) + 10;
