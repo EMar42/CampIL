@@ -1,6 +1,6 @@
 <p align="center">
 <h1 align="center">CampIL</h1>
-  <img height="400" width="auto"  src="./screenshots/camp.jpg">
+  <img height="auto" width="auto"  src="./screenshots/camp.jpg">
 </p>
 
 
