@@ -9,10 +9,14 @@ A Node.js web application project from the. It is a web application designed to 
 ### Features: 
 I wrote the main features if you are just curious about what is there.
 
-##### Security: Mongo Injection | XSS | Escaping Injection | Cookie & Session handler
-##### User: Authentication | Autorization | Session & Cookie control | Some xss 
-##### Campground: Create/Update/Edit/Delete camp | Pictures handle | Cluser Map | Individual Map
-##### Review : Add & Edit user review.
+#### Security: 
+Mongo Injection | XSS | Escaping Injection | Cookie & Session handler
+#### User: 
+Authentication | Autorization | Session & Cookie control | Some xss 
+#### Campground: 
+Create/Update/Edit/Delete camp | Pictures handle | Cluser Map | Individual Map
+#### Review : 
+Add & Edit user review.
 
 
 ## Setup
@@ -39,13 +43,6 @@ This is the list of environment variables that can be added to a .env file to ma
 - DB_URL # Link to your MongoDB database if you want run over your account.
 - SECRET # Secret for the Mongo Store and session configuration.
 - PORT # Port to start the application on.
-
-### Prerequisites
-
-The things you need before installing the software.
-
-* Create a Cloudinary account, MongoDB database (Using Atlas for storing live application) and Mapbox account, Heroku for deployment.
-* Add details of these accounts to an .env file (see the Settings section).
 
 
 
