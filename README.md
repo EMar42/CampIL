@@ -1,17 +1,18 @@
 <p align="center">
 <h1 align="center">CampIL</h1>
-  <img height="400" width="auto" src="Yelpcamp.PNG">
+  <img height="400" width="auto" src=".PNG">
 </p>
 
 
 A Node.js web application project from the. It is a web application designed to add, rate and review different campgrounds, different users(read campers) can put in their comments and concerns, so that it is a well informed and well prepared camping trip for other users. 
-##### features: 
+
+### Features: 
 I wrote the main features if you are just curious about what is there.
 
-###### Security: Mongo Injection | XSS | Escaping Injection | Cookie & Session handler
-###### User: Authentication | Autorization | Session & Cookie control | Some xss 
-###### Campground: Create/Update/Edit/Delete camp | Pictures handle | Cluser Map | Individual Map
-###### Review : Add & Edit user review.
+##### Security: Mongo Injection | XSS | Escaping Injection | Cookie & Session handler
+##### User: Authentication | Autorization | Session & Cookie control | Some xss 
+##### Campground: Create/Update/Edit/Delete camp | Pictures handle | Cluser Map | Individual Map
+##### Review : Add & Edit user review.
 
 
 ## Setup
