@@ -1,7 +1,11 @@
 <div align="center">
 <h1 align="center">CampIL</h1>
   <img height="auto" width="auto"  src="./screenshots/camp.jpg">
+<<<<<<< HEAD
 </div>
+=======
+</p>
+>>>>>>> afcd848b4596a715bc4da8f8d489a5b1de9d9cc1
 
 
 A Node.js web application project. It is a web application designed to add, rate and review different campgrounds, different users(read campers) can put in their comments and concerns, so that it is a well informed and well prepared camping trip for other users. 
