@@ -22,8 +22,8 @@ Add & Edit user review.
 
 ## Setup
 If you would like to make a separate location except for Israel - delete this line or change the initials
-CampIL/controllers/campgrounds.js 
 ```
+*Go to* - CampIL/controllers/campgrounds.js 
 countries: ["il"], //["<Enter ur specific country - example: il - stands for Israel >"]
 ```
 1. Create a Cloudinary account, MongoDB database and Mapbox account.

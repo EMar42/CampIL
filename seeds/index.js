@@ -69,7 +69,7 @@ const seedDB = async () => {
                     filename: "CampIL/jieh2qusobrbvrdguorg",
                 },
                 {
-                    url: "https://res.cloudinary.com/diuytoipw/image/upload/v1662719576/CampIL/ujbjj7qk9obkqrzw3l0u.jpg",
+                    url: "https://images.unsplash.com/photo-1533873984035-25970ab07461?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80",
                     filename: "CampIL/lzfpvmhb55pojkceiuuu",
                 },
             ],
