@@ -44,9 +44,17 @@ Main features included at this project
 If you would like to make a separate location except for Israel - delete this line or change the initials.
 
 **Go to** - 
+```json 
+CampIL/controllers/campgrounds.js
 ```
-CampIL/controllers/campgrounds.js 
-countries: ["il"], //["<Enter ur specific country - example: il - stands for Israel >"]
+```javascript
+const geoData = await geocoder
+        .forwardGeocode({
+            query: req.body.campground.location,
+            countries: ["il"], //["<Enter ur specific country - example: il - stands for Israel >"]
+            limit: 1,
+        })
+        .send();
 ```
 
 
