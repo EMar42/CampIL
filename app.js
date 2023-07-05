@@ -20,7 +20,7 @@ const reviewRoutes = require("./routes/reviews");
 
 const MongoStore = require("connect-mongo");
 
-const dbUrl = mongodb+srv://user0:7uyXpq52P3HFaWWv@cluster0.49totap.mongodb.net/?retryWrites=true&w=majority
+const dbUrl = process.env.DB_URL;
 const SECRET = process.env.SECRET || "thisshouldbeabettersecret";
 const PORT = process.env.PORT || 3000;
 
