@@ -20,7 +20,7 @@ const reviewRoutes = require("./routes/reviews");
 
 const MongoStore = require("connect-mongo");
 
-const dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/CampIL";
 const SECRET = process.env.SECRET || "thisshouldbeabettersecret";
 const PORT = process.env.PORT || 3000;
 
